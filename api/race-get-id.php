@@ -8,7 +8,7 @@ header("Access-Control-Allow-Methods: GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 try {
-    $race = getRace(substr($_SERVER['REQUEST_URI'],21));
+    $race = getRace(substr($_SERVER['REQUEST_URI'],37));
     http_response_code(200);
     
     echo json_encode($race);
