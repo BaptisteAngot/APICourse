@@ -13,7 +13,7 @@ try {
     updateRace($race);
     http_response_code(200);
     
-    echo json_encode($ponies);
+    echo json_encode($race);
     return;
 } catch (Exception $ex) {
     http_response_code(500);

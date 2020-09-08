@@ -77,21 +77,21 @@ function addRace($race){
         $query2->execute();
     }
 }
-    
-function updateRace($race){ 
-    $query = getPDORace()->prepare("update race SET location=:l, date=:d where id_race=:id");
+
+function updateRace($race){
+    $query = getPDORace()->prepare("update races SET location=:l, date=:d where id_race=:id");
     $query->bindValue(":id", $race->id);
     $query->bindValue(":l", $race->location);
     $query->bindValue(":d", $race->date);
-    $query->execute();    
+    $query->execute();
     $query2 = getPDORace()->prepare("delete from poniesinraces(id_poney,id_race) where id_race=:id");
     $query2->bindValue(":id", $race->id);
-    $query2->execute();  
+    $query2->execute();
     foreach($race->ponies as $p){
         try{
             $query2 = getPDORace()->prepare("insert into poniesinraces(id_poney,id_race) values(:p,:r)");
-            $query2->bindValue(":p", $race->id);
-            $query2->bindValue(":r", $p->id);
+            $query2->bindValue(":r", $race->id);
+            $query2->bindValue(":p", $p->id);
             $query2->execute();
         } catch (Exception $e){}
     }

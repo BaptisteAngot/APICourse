@@ -8,7 +8,7 @@ header("Access-Control-Allow-Methods: GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 try {
-    $ponies = getPony(substr($_SERVER['REQUEST_URI'],21));
+    $ponies = getPony(substr($_SERVER['REQUEST_URI'],37));
     http_response_code(200);
     
     echo json_encode($ponies);
